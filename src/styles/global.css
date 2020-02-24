@@ -1,0 +1,78 @@
+
+body {
+    background-image: url('./img/dominik-schroder-FIKD9t5_5zQ-unsplash.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+
+    font-family: "Muli", sans-serif;
+}
+
+h1{
+    font-weight: 900;
+    font-size: 130px;
+}
+
+input{
+    border: none;
+    width: 90px;
+    height: 100px;
+    margin-left: 20px;
+    margin-top: 70px;
+    border-radius: 10px;
+    text-align: center;
+    font-size: 70px;
+    box-shadow: rgba(0,0,0, .3) 0px 10px 10px;
+}
+button {
+    display: none;
+}
+
+.forecast-text{
+    font-size: 40px;
+    font-weight: 300;
+    letter-spacing: .9rem;
+    padding-top:70px;
+}
+.zip-directions {
+    margin-top: 100px;
+}
+.weather-main {
+    width: 600px;
+    height: 500px;
+    background-color: rgba(245,245,245, .7);
+    box-shadow: rgba(0,0,0, .3) 0px 10px 10px;
+    border-radius: 10px;
+    margin-top: 100px;
+}
+
+.weather-content{
+    padding-top: 20px;
+    height: 350px;
+}
+
+.date {
+    font-size: 14px;
+}
+
+.city{
+    font-size: 30px;
+}
+
+.temp{
+    margin-top: 50px;
+}
+
+.forecast-main{
+    width: 130%;
+    margin-left: -15%;
+}
+
+.day {
+    width: 75px;
+    height: 200px;
+    background-color: rgba(245,245,245);
+    box-shadow: rgba(0,0,0, .3) 0px 10px 10px;
+    border-radius: 10px;
+}
+
