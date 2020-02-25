@@ -37,6 +37,7 @@ export default class Home extends Component {
         icon5: undefined,
 
         noData: true,
+        errors: [],
     }
 
     render() {
@@ -47,12 +48,13 @@ export default class Home extends Component {
             zip4,
             zip5,
             noData,
+            errors,
         } = this.state;
 
         return(
             <div>
                 { noData ?
-                    <Form submit={this.submit}
+                    <Form submit={this.submit} errors={errors}
                     elements={() => (
                         <React.Fragment>
                         <h5 className="text-center forecast-text">Forecast</h5>
@@ -64,7 +66,6 @@ export default class Home extends Component {
                             <input type="text" maxLength="1" placeholder="0" name="zip5" value={zip5} onChange={this.change}></input>
                             <button type="submit"></button>
                         </div>
-                        <p className="text-secondary text-center zip-directions">Please Enter a Zip</p>
                         </React.Fragment>
                         )}
                     />
@@ -98,9 +99,12 @@ export default class Home extends Component {
 
         if(!zip1 || !zip2 || !zip3 || !zip4 || !zip5){
             //validations
-            console.log("I work if empty")
+            this.setState({errors: "validation error"})
+
         } else if (isNaN(zip1) ||isNaN(zip2) ||isNaN(zip3) ||isNaN(zip4) ||isNaN(zip5)){
-            console.log("I submit if not a number")
+            this.setState(prevState => ({
+                errors: [...prevState.errors, "validation error"]
+              }));
         } else {
             //fetch logic
             await fetch(
@@ -140,8 +144,9 @@ export default class Home extends Component {
 
                     city: response.city.name,
                     noData: false,
+                    errors: "",
                 });
-              })
+              }).catch(err => this.setState({errors: "err"}))
     }
 }
 }

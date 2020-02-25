@@ -28,6 +28,10 @@ button {
     display: none;
 }
 
+a:hover{
+    text-decoration: none;
+}
+
 .forecast-text{
     font-size: 40px;
     font-weight: 300;
@@ -35,8 +39,10 @@ button {
     padding-top:70px;
 }
 .zip-directions {
-    margin-top: 100px;
+    margin-top: 80px;
 }
+
+
 .weather-main {
     width: 600px;
     height: 500px;

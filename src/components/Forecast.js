@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router-dom';
+
 
 //Weather Icons Import
 import { WiDaySunny, WiCloudy, WiThunderstorm, WiRain, WiFog, WiSnow, WiRainMix } from "weather-icons-react";
@@ -29,12 +31,14 @@ export default class Forecast extends Component {
             icon5,
         } = this.props
 
-        tempNow = JSON.stringify(tempNow).slice(0, 2);
-        temp2 = JSON.stringify(temp2).slice(0, 2);
-        temp3 = JSON.stringify(temp3).slice(0, 2);
-        temp4 = JSON.stringify(temp4).slice(0, 2);
-        temp5 = JSON.stringify(temp5).slice(0, 2);
+        const shortenDegrees = obj => JSON.stringify(obj).slice(0, 2);
+        tempNow = shortenDegrees(tempNow)
+        temp2 = shortenDegrees(temp2)
+        temp3 = shortenDegrees(temp3)
+        temp4 = shortenDegrees(temp4)
+        temp5 = shortenDegrees(temp5)
 
+        // icon descriptions used to bind to the correct icon
         let iconArray = [icon, icon2, icon3, icon4, icon5];
         let icons = iconArray.map(icon =>{
             if (icon === "Clear"){
@@ -120,6 +124,7 @@ export default class Forecast extends Component {
                 </div>
               </div>
             </div>
+            <Link to='/' className="text-secondary fixed-bottom d-block text-center">New Zip Code</Link>
         </React.Fragment>
         
       );
