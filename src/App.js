@@ -6,9 +6,11 @@ import {
   BrowserRouter as Router,
   Route,
   Switch,
+  Redirect,
 } from 'react-router-dom';
 
-import Home from './components/Home'
+import Home from './components/Home';
+import Page404 from './components/Page404';
 
 export default class App extends Component {
   
@@ -19,7 +21,10 @@ export default class App extends Component {
 
         <Switch>
           
-              <Route exact path='/'  component={Home}/>
+              <Route exact path='/' component={Home}/>
+              <Route component={Page404} />
+
+              <Redirect to='/notfound' />
 
         </Switch>
       </div>

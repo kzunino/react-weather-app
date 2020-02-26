@@ -124,9 +124,13 @@ export default class Forecast extends Component {
                 </div>
               </div>
             </div>
-            <Link to='/' className="text-secondary fixed-bottom d-block text-center">New Zip Code</Link>
+            <Link to='/' onClick={ this.refreshPage } className="text-secondary fixed-bottom d-block text-center">New Zip Code</Link>
         </React.Fragment>
         
       );
+    }
+
+    refreshPage = () => {
+        window.location.reload();
     }
 }
