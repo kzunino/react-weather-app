@@ -108,7 +108,7 @@ export default class Home extends Component {
         } else {
             //fetch logic
             await fetch(
-                `https://api.openweathermap.org/data/2.5/forecast?zip=${zip1}${zip2}${zip3}${zip4}${zip5}&appid=${apiKey}&units=imperial`
+                `https://api.openweathermap.org/data/2.5/forecast?zip=${zip1}${zip2}${zip3}${zip4}${zip5}&appid=${REACT_APP_apiKey}&units=imperial`
             )
             .then(response => {
                 return response.json()
