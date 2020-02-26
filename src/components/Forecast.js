@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 //Weather Icons Import
 import { WiDaySunny, WiCloudy, WiThunderstorm, WiRain, WiFog, WiSnow, WiRainMix } from "weather-icons-react";
+//Moment.js for date formatting
 import Moment from 'react-moment'
 
 export default class Forecast extends Component {
@@ -31,6 +32,7 @@ export default class Forecast extends Component {
             icon5,
         } = this.props
 
+        //Removes decimals of temperatures
         const shortenDegrees = obj => JSON.stringify(obj).slice(0, 2);
         tempNow = shortenDegrees(tempNow)
         temp2 = shortenDegrees(temp2)
