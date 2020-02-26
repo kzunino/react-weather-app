@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Forecast from './Forecast';
 import Form from './Form';
-import apiKey from '../config';
+//import apiKey from '../config';
 
 export default class Home extends Component {
 
