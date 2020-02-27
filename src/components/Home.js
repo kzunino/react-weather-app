@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Forecast from './Forecast';
 import Form from './Form';
-import apiKey from '../config';
+//import apiKey from '../config';
 
 export default class Home extends Component {
 
@@ -142,7 +142,7 @@ export default class Home extends Component {
         } else {
             //fetch logic
             await fetch(
-                `https://api.openweathermap.org/data/2.5/forecast?zip=${zip1}${zip2}${zip3}${zip4}${zip5}&appid=${apiKey}&units=imperial`
+                `https://api.openweathermap.org/data/2.5/forecast?zip=${zip1}${zip2}${zip3}${zip4}${zip5}&appid=${process.env.REACT_APP_apiKey}&units=imperial`
             )
             .then(response => {
                 return response.json()
