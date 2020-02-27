@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Forecast from './Forecast';
 import Form from './Form';
-//import apiKey from '../config';
+import apiKey from '../config';
 
 export default class Home extends Component {
 
@@ -40,6 +40,39 @@ export default class Home extends Component {
         errors: [],
     }
 
+    componentDidMount() {
+        const input = document.getElementsByClassName("input")[0];
+        input.onkeyup = function(e) {
+            let target = e.srcElement || e.target;
+            let maxLength = parseInt(target.attributes["maxlength"].value, 10);
+            let myLength = target.value.length;
+            if (myLength >= maxLength) {
+                let next = target;
+                while ((next = next.nextElementSibling)) {
+                    if (next == null) 
+                        break;
+                    if (next.tagName.toLowerCase() === "input") {
+                        next.focus();
+                        break;
+                    }
+                }
+            }
+            // Move to previous field if empty (user pressed backspace)
+            else if (myLength === 0) {
+                let previous = target;
+                while ((previous = previous.previousElementSibling)) {
+                    if (previous == null)
+                        break;
+                    if (previous.tagName.toLowerCase() === "input") {
+                        previous.focus();
+                        break;
+                    }
+                }
+            }
+        }
+    }
+
+
     render() {
         let { 
             zip1,
@@ -58,12 +91,12 @@ export default class Home extends Component {
                     elements={() => (
                         <React.Fragment>
                         <h5 className="text-center forecast-text">Forecast</h5>
-                        <div className="row justify-content-center">
-                            <input type="text" maxLength="1" placeholder="0" name="zip1" value={zip1} onChange={this.change}></input>
-                            <input type="text" maxLength="1" placeholder="0" name="zip2" value={zip2} onChange={this.change}></input>
-                            <input type="text" maxLength="1" placeholder="0" name="zip3" value={zip3} onChange={this.change}></input>
-                            <input type="text" maxLength="1" placeholder="0" name="zip4" value={zip4} onChange={this.change}></input>
-                            <input type="text" maxLength="1" placeholder="0" name="zip5" value={zip5} onChange={this.change}></input>
+                        <div className="row justify-content-center input">
+                            <input type="text" maxLength="1" placeholder="0"  name="zip1" value={zip1} onChange={this.change}></input>
+                            <input type="text" maxLength="1" placeholder="0"  name="zip2" value={zip2} onChange={this.change}></input>
+                            <input type="text" maxLength="1" placeholder="0"  name="zip3" value={zip3} onChange={this.change}></input>
+                            <input type="text" maxLength="1" placeholder="0"  name="zip4" value={zip4} onChange={this.change}></input>
+                            <input type="text" maxLength="1" placeholder="0"  name="zip5" value={zip5} onChange={this.change}></input>
                             <button type="submit"></button>
                         </div>
                         </React.Fragment>
@@ -74,6 +107,7 @@ export default class Home extends Component {
                 <Forecast {...this.state}/>
                 }
             </div>
+            
         )
     }
 
@@ -108,7 +142,7 @@ export default class Home extends Component {
         } else {
             //fetch logic
             await fetch(
-                `https://api.openweathermap.org/data/2.5/forecast?zip=${zip1}${zip2}${zip3}${zip4}${zip5}&appid=${process.env.REACT_APP_apiKey}&units=imperial`
+                `https://api.openweathermap.org/data/2.5/forecast?zip=${zip1}${zip2}${zip3}${zip4}${zip5}&appid=${apiKey}&units=imperial`
             )
             .then(response => {
                 return response.json()
